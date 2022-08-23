@@ -53,8 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppointmentService\DataContract\HomeCallService.cs" />
-    <Compile Include="AppointmentService\DataContract\HubService.cs" />
+    <Compile Include="AppointmentService\HomeCallService\HomeCallDataContractClasses.cs" />
+    <Compile Include="AppointmentService\HomeCallService\HomeCallServiceClient.cs" />
+    <Compile Include="AppointmentService\HomeCallService\IHomeCallService.cs" />
+    <Compile Include="AppointmentService\HubService\HubServiceClient.cs" />
+    <Compile Include="AppointmentService\HubService\HubServiceContractClasses.cs" />
+    <Compile Include="AppointmentService\HubService\HubServiceEnums.cs" />
+    <Compile Include="AppointmentService\HubService\IHubService.cs" />
     <Compile Include="AppointmentService\SvipClient\DataContract\ErrorResponse.cs" />
     <Compile Include="AppointmentService\SvipClient\DataContract\GetSessionResponse.cs" />
     <Compile Include="AppointmentService\SvipClient\DataContract\GetTokenResponse.cs" />
@@ -63,6 +68,8 @@
     <Compile Include="AppointmentService\SvipClient\Tools\HashUtilites.cs" />
     <Compile Include="AppointmentService\SvipClient\Tools\HtmlHelper.cs" />
     <Compile Include="AppointmentService\SvipClient\Tools\JsonFormatter.cs" />
+    <Compile Include="IemkService\Abstractions\IEmkClient.cs" />
+    <Compile Include="IemkService\Abstractions\IEmkDocument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +77,9 @@
     <Compile Include="AppointmentService\SvipClient\SvipClient.Tracing.cs" />
     <Compile Include="AppointmentService\SvipClient\SvipClient.Opeations.cs" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IemkService\Exception\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
