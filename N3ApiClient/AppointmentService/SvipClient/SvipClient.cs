@@ -46,7 +46,6 @@ namespace N3ApiClient.AppointmentService.Svip
 
         private void PrepareRequest(IRestRequest request, string apiMethodName)
         {
-            //use request parameters to store additional properties, not really used by the requests
             request.AddParameter(ApiTimestampParameterName, DateTime.Now.Ticks, ParameterType.UrlSegment);
             request.AddParameter(ApiTickCountParameterName, Environment.TickCount.ToString(), ParameterType.UrlSegment);
             if (!string.IsNullOrWhiteSpace(apiMethodName))
@@ -54,7 +53,6 @@ namespace N3ApiClient.AppointmentService.Svip
                 request.AddHeader(ApiMethodNameHeaderName, apiMethodName);
             }
 
-            // trace requests and responses
             if (Tracer != null)
             {
                 request.OnBeforeRequest = http => Trace(http, request);

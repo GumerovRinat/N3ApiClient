@@ -7,7 +7,7 @@ namespace N3ApiClient.AppointmentService.DataContract.HubService2
 {
     using N3ApiClient.AppointmentService.DataContract.HubService;
     using System.Runtime.Serialization;
-
+    using System.Xml.Serialization;
 
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -278,7 +278,9 @@ namespace N3ApiClient.AppointmentService.DataContract.HubService2
 
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
 
-        private HubService2.Error[] ErrorListField;
+#nullable enable
+        private HubService2.Error[]? ErrorListField;
+#nullable disable
 
         private System.Nullable<int> IdHistoryField;
 
@@ -296,8 +298,8 @@ namespace N3ApiClient.AppointmentService.DataContract.HubService2
             }
         }
 
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public HubService2.Error[] ErrorList
+        [XmlElement(IsNullable = true)]
+        public HubService2.Error[]? ErrorList
         {
             get
             {
@@ -601,6 +603,7 @@ namespace N3ApiClient.AppointmentService.DataContract.HubService2
             }
         }
 
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://schemas.datacontract.org/2004/07/HubService2.ContractsClasses.ProxyAndReturn")]
         [System.Runtime.Serialization.DataMemberAttribute()]
         public HubService2.ContractsClasses.ProxyAndReturn.NextAvailableDate NextAvailableDate
         {
