@@ -30,7 +30,13 @@ namespace N3ApiClient.IemkService.Abstractions
         /// </summary>
         /// <param name="exception">Исключение</param>
         IOperationResult SetException(object exception);
-        
+
+        /// <summary>
+        /// Задать ошбку при выполнении операции
+        /// </summary>
+        /// <param name="exception">Исключение</param>
+        IOperationResult SetExceptionMessage(string message);
+
         /// <summary>
         /// Возвращает объект полученный в результате выполнения операции
         /// </summary>

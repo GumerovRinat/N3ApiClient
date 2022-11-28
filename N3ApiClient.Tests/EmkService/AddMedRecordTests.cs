@@ -1,4 +1,5 @@
 using N3ApiClient.IemkService.ClientFactory;
+using N3ApiClient.IemkService.ClientOperations.EmkServiceOperations;
 using N3ApiClient.IemkService.ClientOperations.PixServiceOperations;
 using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.MedRec;
 using N3ApiClient.IemkService.OperationDto.EmkServiceDto;
@@ -22,7 +23,7 @@ namespace N3ApiClient.Tests.EmkService
             addMedRecordDto.MedRecord = new MedRecordBuilder().AddMainDiagnosis().Build()[0];
 
             var operation = new AddMedRecordOperation(addMedRecordDto);
-            var creator = new EmkServiceClientFactory();
+            var creator = new EmkClientCreator();
 
             //Act
             var result = creator.ExecuteOperation(operation);

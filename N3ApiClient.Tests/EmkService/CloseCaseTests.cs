@@ -1,4 +1,5 @@
 using N3ApiClient.IemkService.ClientFactory;
+using N3ApiClient.IemkService.ClientOperations.EmkServiceOperations;
 using N3ApiClient.IemkService.ClientOperations.PixServiceOperations;
 using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Case;
 using N3ApiClient.IemkService.OperationDto.EmkServiceDto;
@@ -28,7 +29,7 @@ namespace N3ApiClient.Tests.EmkService
             ((CaseAmb)closeCaseDto.Case).IdCaseType = 0;
 
             var operation = new CloseCaseOperation(closeCaseDto);
-            var creator = new EmkServiceClientFactory();
+            var creator = new EmkClientCreator();
 
             //Act
             var result = creator.ExecuteOperation(operation);

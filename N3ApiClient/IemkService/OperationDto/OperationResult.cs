@@ -51,7 +51,7 @@ namespace N3ApiClient.IemkService.OperationDto
         /// Устанавливает ошибку операции
         /// </summary>
         /// <param name="exception"></param>
-        public IOperationResult SetException(string exceptionMessage)
+        public IOperationResult SetExceptionMessage(string exceptionMessage)
         {
             _exception = new NetrikaClientException(exceptionMessage);
             return this;
