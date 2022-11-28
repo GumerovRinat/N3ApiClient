@@ -48,12 +48,22 @@ namespace N3ApiClient.IemkService.OperationDto
         }
 
         /// <summary>
+        /// Устанавливает ошибку операции
+        /// </summary>
+        /// <param name="exception"></param>
+        public IOperationResult SetException(string exceptionMessage)
+        {
+            _exception = new NetrikaClientException(exceptionMessage);
+            return this;
+        }
+
+        /// <summary>
         /// Возвращает объект полученный в результате выполнения операции
         /// </summary>
         /// <returns></returns>
-        public object GetResult()
+        public T GetResult<T>()
         {
-            return _operationResult;
+            return (T)_operationResult;
         }
 
         /// <summary>

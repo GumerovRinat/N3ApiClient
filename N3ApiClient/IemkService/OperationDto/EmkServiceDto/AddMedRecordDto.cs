@@ -10,6 +10,6 @@ namespace N3ApiClient.IemkService.OperationDto.EmkServiceDto
 
         public MedRecord MedRecord { get; set; }
 
-        public System.Nullable<byte> Confidentiality { get; set; }
+        public byte? Confidentiality { get; set; }
     }
 }

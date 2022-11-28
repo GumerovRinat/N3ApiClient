@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace N3ApiClient.IemkService.ClientFactory
 {
-    public class EmkServiceClientFactory : EmkClientFactory
+    public class EmkClientCreator : EmkClientFactory
     {
         public override IEmkClient CreateInstance()
         {

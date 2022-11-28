@@ -5,20 +5,20 @@ using N3ApiClient.IemkService.OperationDto.EmkServiceDto;
 
 namespace N3ApiClient.IemkService.ClientOperations.EmkServiceOperations
 {
-    public class CloseCaseOperation : IEmkClientOperation
+    public class AddCaseOperation : IEmkClientOperation
     {
-        private CaseDto _closeCasetDto;
+        private CaseDto _addCaseDto;
         private OperationResult _operationResult;
 
-        public CloseCaseOperation(CaseDto createCasetDto)
+        public AddCaseOperation(CaseDto addCaseDto)
         {
-            _closeCasetDto = createCasetDto;
+            _addCaseDto = addCaseDto;
             _operationResult = new OperationResult();
         }
 
         public OperationResult Execute(EmkServiceClient clientInstance)
         {
-            clientInstance.CloseCase(_closeCasetDto.Token, _closeCasetDto.Case);
+            clientInstance.AddCase(_addCaseDto.Token, _addCaseDto.Case);
             return _operationResult;
         }
     }

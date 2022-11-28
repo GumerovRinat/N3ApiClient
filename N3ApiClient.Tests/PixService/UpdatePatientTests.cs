@@ -45,8 +45,7 @@ namespace N3ApiClient.Tests.PixService
             Assert.NotNull(getResult);
             Assert.True(updateResult.IsSuccess());
             Assert.True(getResult.IsSuccess());
-            Assert.NotNull(getResult.GetResult());
-            var patients = (PatientDto[])getResult.GetResult();
+            var patients = getResult.GetResult<PatientDto[]>();
             Assert.True(patients.Length > 0);
             Assert.Equal("Иван", patients[0].GivenName);
         }

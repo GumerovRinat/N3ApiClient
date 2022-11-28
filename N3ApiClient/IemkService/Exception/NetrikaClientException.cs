@@ -8,6 +8,11 @@ namespace N3ApiClient.IemkService.Exceptions
     {
         private string _errorMessage;
 
+        public NetrikaClientException(string exceptionMessage)
+        {
+            ErrorMessage = exceptionMessage;
+        }
+
         public NetrikaClientException(object exception)
         {
             InnerException = exception;

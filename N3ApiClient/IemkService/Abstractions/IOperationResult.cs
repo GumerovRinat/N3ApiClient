@@ -35,7 +35,7 @@ namespace N3ApiClient.IemkService.Abstractions
         /// Возвращает объект полученный в результате выполнения операции
         /// </summary>
         /// <returns>Объек результата выполнения операции</returns>
-        object GetResult();
+        T GetResult<T>();
 
         /// <summary>
         /// Задать результат выполнения операции

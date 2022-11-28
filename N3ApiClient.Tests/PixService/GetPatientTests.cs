@@ -35,9 +35,7 @@ namespace N3ApiClient.Tests.PixService
             //Assert
             Assert.NotNull(result);
             Assert.True(result.IsSuccess());
-            Assert.NotNull(result.GetResult());
-            var patients = result.GetResult();
-            Assert.IsType<PatientDto[]>(patients);
+            Assert.NotNull(result.GetResult<PatientDto[]>());
         }
     }
 }

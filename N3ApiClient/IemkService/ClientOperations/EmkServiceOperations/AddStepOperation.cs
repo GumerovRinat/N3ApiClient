@@ -3,7 +3,7 @@ using N3ApiClient.IemkService.DataContracts;
 using N3ApiClient.IemkService.OperationDto;
 using N3ApiClient.IemkService.OperationDto.EmkServiceDto;
 
-namespace N3ApiClient.IemkService.ClientOperations.PixServiceOperations
+namespace N3ApiClient.IemkService.ClientOperations.EmkServiceOperations
 {
     public class AddStepOperation : IEmkClientOperation
     {

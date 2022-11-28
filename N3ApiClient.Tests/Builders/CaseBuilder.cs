@@ -1,5 +1,6 @@
 ﻿using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto;
 using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Case;
+using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Step;
 using System;
 
 namespace N3ApiClient.Tests.Builders
@@ -15,9 +16,9 @@ namespace N3ApiClient.Tests.Builders
 
         public CaseBuilder WithCreateBaseAmbCase()
         {
-            _caseAmb.OpenDate = new DateTime(2022, 11, 23);
+            _caseAmb.OpenDate = new DateTime(2022, 11, 10);
             _caseAmb.HistoryNumber = "FA4EE72D-146E-4BCA-A92F-077E7A0CCED0";
-            _caseAmb.IdCaseMis = "6F7316EB-429E-4014-89D7-C0592531A38F";
+            _caseAmb.IdCaseMis = Guid.NewGuid().ToString();
             _caseAmb.IdCaseAidType = 1;                  //Идентификатор вида медицинского обслуживания (Справочник OID: 1.2.643.2.69.1.1.1.16)
             _caseAmb.IdPaymentType = 1;                  //Идентификатор источника финансирования (Справочник OID: 1.2.643.2.69.1.1.1.32)
             _caseAmb.Confidentiality = 1;                //Уровень конфиденциальности передаваемой информации (Справочник OID: 1.2.643.5.1.13.2.7.1.9)
@@ -35,6 +36,18 @@ namespace N3ApiClient.Tests.Builders
             participant.IdRole = 3;
             _caseAmb.Authenticator = participant;
             _caseAmb.Author = participant;
+            return this;
+        }
+
+        public CaseBuilder AddAmbSteps()
+        {
+            _caseAmb.Steps = new StepBuilder().WithAddAmbStep().BuildAmbStep();
+            return this;
+        }
+
+        public CaseBuilder AddMedRecords() 
+        {
+            _caseAmb.MedRecords = new MedRecordBuilder().AddMainDiagnosis().AddComplicationDiagnosis().Build();
             return this;
         }
 

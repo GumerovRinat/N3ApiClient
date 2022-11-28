@@ -85,8 +85,10 @@
     <Compile Include="IemkService\ClientFactory\PixClient.cs" />
     <Compile Include="IemkService\ClientFactory\EmkServiceClientCreator.cs" />
     <Compile Include="IemkService\ClientFactory\PixClientCreator.cs" />
+    <Compile Include="IemkService\ClientOperations\EmkServiceOperations\AddMedRecordOperation.cs" />
     <Compile Include="IemkService\ClientOperations\EmkServiceOperations\AddStepOperation.cs" />
     <Compile Include="IemkService\ClientOperations\EmkServiceOperations\CloseCaseOperation.cs" />
+    <Compile Include="IemkService\ClientOperations\EmkServiceOperations\AddCaseOperation.cs" />
     <Compile Include="IemkService\ClientOperations\EmkServiceOperations\CreateCaseOperation.cs" />
     <Compile Include="IemkService\ClientOperations\PixServiceOperations\UpdatePatientOperation.cs" />
     <Compile Include="IemkService\ClientOperations\PixServiceOperations\GetPatientOperation.cs" />

@@ -1,28 +1,27 @@
 using N3ApiClient.IemkService.ClientFactory;
 using N3ApiClient.IemkService.ClientOperations.PixServiceOperations;
+using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.MedRec;
 using N3ApiClient.IemkService.OperationDto.EmkServiceDto;
 using N3ApiClient.Tests.Builders;
 using Xunit;
 
 namespace N3ApiClient.Tests.EmkService
 {
-    public class CreateCaseTests
+    public class AddMedRecordTests
     {
         [Fact]
-        public void CreateCase_ResultSuccess()
+        public void AddMedRecord_ResultSuccess()
         {
             //Arrange
-            CaseDto createCaseDto = new CaseDto()
+            AddMedRecordDto addMedRecordDto = new AddMedRecordDto()
             {
                 Token = Constants.EMK_TOKEN,
-                Case = new CaseBuilder().
-                    WithCreateBaseAmbCase().
-                    AddAmbSteps().
-                    Build()
+                IdLpu = Constants.EMK_IDLPU,
+                IdPatientMis = "85E747C8-4BB1-4D54-9BAA-9112C2435849",
             };
-            createCaseDto.Case.IdCaseMis = "54ED160B-2F73-4503-B50D-210E970F4448";
+            addMedRecordDto.MedRecord = new MedRecordBuilder().AddMainDiagnosis().Build()[0];
 
-            var operation = new CreateCaseOperation(createCaseDto);
+            var operation = new AddMedRecordOperation(addMedRecordDto);
             var creator = new EmkServiceClientFactory();
 
             //Act
