@@ -44,8 +44,8 @@ namespace N3ApiClient.Tests.Builders
             ClinicMainDiagnosis mainDiagnosis = new ClinicMainDiagnosis();
             mainDiagnosis.Doctor = new MedicalStaffBuilder().WithAddBaseMedicalStaff().Build();
             DiagnosisInfo diagnosisInfo = new DiagnosisInfo();
-            diagnosisInfo.DiagnosedDate = new System.DateTime(2022,11,10);
-            diagnosisInfo.MkbCode = "I11.9";
+            //diagnosisInfo.DiagnosedDate = new System.DateTime(2022,11,10);
+            //diagnosisInfo.MkbCode = "I11.9";
             mainDiagnosis.DiagnosisInfo = diagnosisInfo;
             return mainDiagnosis;
         }

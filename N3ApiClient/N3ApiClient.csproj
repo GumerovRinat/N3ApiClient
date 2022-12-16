@@ -77,13 +77,9 @@
     <Compile Include="IemkService\Abstractions\IOperationResult.cs" />
     <Compile Include="IemkService\Abstractions\EmkClientFactory.cs" />
     <Compile Include="IemkService\Abstractions\PixClientFactory.cs" />
-    <Compile Include="IemkService\CDA\CDABuilder.cs" />
-    <Compile Include="IemkService\CDA\DataContracts\ClinicalDocumentAddressExstension.cs" />
-    <Compile Include="IemkService\CDA\DataContracts\ClinicalDocumentIdentityExstension.cs" />
-    <Compile Include="IemkService\CDA\DataContracts\POCD_MT000040ClinicalDocument.cs" />
     <Compile Include="IemkService\ClientFactory\EmkClient.cs" />
     <Compile Include="IemkService\ClientFactory\PixClient.cs" />
-    <Compile Include="IemkService\ClientFactory\EmkServiceClientCreator.cs" />
+    <Compile Include="IemkService\ClientFactory\EmkClientCreator.cs" />
     <Compile Include="IemkService\ClientFactory\PixClientCreator.cs" />
     <Compile Include="IemkService\ClientOperations\EmkServiceOperations\AddMedRecordOperation.cs" />
     <Compile Include="IemkService\ClientOperations\EmkServiceOperations\AddStepOperation.cs" />
@@ -94,19 +90,18 @@
     <Compile Include="IemkService\ClientOperations\PixServiceOperations\GetPatientOperation.cs" />
     <Compile Include="IemkService\ClientOperations\PixServiceOperations\AddPatientOperation.cs" />
     <Compile Include="IemkService\DataContracts\EmkService.cs" />
-    <Compile Include="IemkService\DataContracts\INetrikaServiceClient.cs" />
+    <Compile Include="IemkService\Abstractions\INetrikaServiceClient.cs" />
     <Compile Include="IemkService\DataContracts\PixService.cs" />
     <Compile Include="IemkService\Exception\NetrikaClientException.cs" />
-    <Compile Include="IemkService\OperationDto\EmkServiceDto\AddStepToCaseDto.cs" />
-    <Compile Include="IemkService\OperationDto\EmkServiceDto\CaseDto.cs" />
-    <Compile Include="IemkService\OperationDto\EmkServiceDto\AddMedRecordDto.cs" />
-    <Compile Include="IemkService\OperationDto\PixServiceDto\UpdatePatientDto.cs" />
-    <Compile Include="IemkService\OperationDto\PixServiceDto\GetPatientDto.cs" />
-    <Compile Include="IemkService\OperationDto\PixServiceDto\AddPatientDto.cs" />
-    <Compile Include="IemkService\OperationDto\BaseDto.cs" />
-    <Compile Include="IemkService\OperationDto\OperationResult.cs" />
+    <Compile Include="IemkService\Dto\EmkServiceDto\AddStepToCaseDto.cs" />
+    <Compile Include="IemkService\Dto\EmkServiceDto\CaseDto.cs" />
+    <Compile Include="IemkService\Dto\EmkServiceDto\AddMedRecordDto.cs" />
+    <Compile Include="IemkService\Dto\PixServiceDto\UpdatePatientDto.cs" />
+    <Compile Include="IemkService\Dto\PixServiceDto\GetPatientDto.cs" />
+    <Compile Include="IemkService\Dto\PixServiceDto\AddPatientDto.cs" />
+    <Compile Include="IemkService\Dto\BaseDto.cs" />
+    <Compile Include="IemkService\Dto\OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools\XmlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

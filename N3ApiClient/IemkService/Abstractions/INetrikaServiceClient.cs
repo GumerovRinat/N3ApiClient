@@ -1,4 +1,4 @@
-﻿namespace N3ApiClient.IemkService.DataContracts
+﻿namespace N3ApiClient.IemkService.Abstractions
 {
     public interface INetrikaServiceClient
     {

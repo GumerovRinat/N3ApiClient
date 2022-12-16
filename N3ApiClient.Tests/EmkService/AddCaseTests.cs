@@ -1,8 +1,11 @@
 using N3ApiClient.IemkService.ClientFactory;
 using N3ApiClient.IemkService.ClientOperations.EmkServiceOperations;
 using N3ApiClient.IemkService.ClientOperations.PixServiceOperations;
-using N3ApiClient.IemkService.OperationDto.EmkServiceDto;
+using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Common;
+using N3ApiClient.IemkService.Dto;
+using N3ApiClient.IemkService.Dto.EmkServiceDto;
 using N3ApiClient.Tests.Builders;
+using System.ServiceModel;
 using Xunit;
 
 namespace N3ApiClient.Tests.EmkService
@@ -36,6 +39,36 @@ namespace N3ApiClient.Tests.EmkService
             //Assert
             Assert.NotNull(result);
             Assert.True(result.IsSuccess());
+        }
+
+        [Fact]
+        public void AddCaseWithWarning_ResultSuccess_WarningMessageIsNotNull()
+        {
+            //Arrange
+            RequestWarning warning = new RequestWarning()
+            {
+                PropertyName = "ConsultNote",
+                Message = "Поле содержит ошибки",
+                WarningCode = 8,
+                Warnings = new RequestWarning[]
+                {
+                    new RequestWarning
+                    {
+                        PropertyName = "Attachments",
+                        Message = "Есть PDF, нет TXT",
+                        WarningCode = 2135
+                    }
+                }
+            };
+            var faultException = new FaultException<RequestWarning[]>(new RequestWarning[] { warning });
+            var result = new OperationResult().SetException(faultException).SetSuccess(true);
+
+            //Act
+
+
+            //Assert
+            Assert.True(result.IsSuccess());
+            Assert.NotNull(result.GetException().WarningMessage);
         }
     }
 }

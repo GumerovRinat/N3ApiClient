@@ -26,4 +26,8 @@
     <ProjectReference Include="..\N3ApiClient\N3ApiClient.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+
 </Project>

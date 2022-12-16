@@ -1,6 +1,6 @@
 ﻿using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.MedRec;
 
-namespace N3ApiClient.IemkService.OperationDto.EmkServiceDto
+namespace N3ApiClient.IemkService.Dto.EmkServiceDto
 {
     public class AddMedRecordDto : BaseDto
     {

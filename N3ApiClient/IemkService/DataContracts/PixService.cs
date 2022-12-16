@@ -1,4 +1,6 @@
-﻿namespace N3ApiClient.IemkService.DataContracts
+﻿using N3ApiClient.IemkService.Abstractions;
+
+namespace N3ApiClient.IemkService.DataContracts
 {
     namespace N3.PixService.Dto
     {

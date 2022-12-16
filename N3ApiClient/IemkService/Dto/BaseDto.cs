@@ -1,4 +1,4 @@
-﻿namespace N3ApiClient.IemkService.OperationDto
+﻿namespace N3ApiClient.IemkService.Dto
 {
     public class BaseDto
     {

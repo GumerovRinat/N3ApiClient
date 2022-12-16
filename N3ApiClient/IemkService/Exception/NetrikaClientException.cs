@@ -24,7 +24,14 @@ namespace N3ApiClient.IemkService.Exceptions
             _errorMessage = "";
             if (exception is FaultException<RequestFault>)
             {
-                ErrorMessage = ((FaultException<RequestFault>)exception).Detail.Message + " (" + ((FaultException<RequestFault>)exception).Detail.PropertyName + "); ";
+                if(((FaultException<RequestFault>)exception).Detail.Errors != null && ((FaultException<RequestFault>)exception).Detail.Errors.Length > 0)
+                {
+                    for (int i = 0; i < ((FaultException<RequestFault>)exception).Detail.Errors.Length; i++)
+                    {
+                        ErrorMessage = GetFaultMessage(((FaultException<RequestFault>)exception).Detail.Errors[i]);
+                    }
+                }
+                ErrorMessage += ((FaultException<RequestFault>)exception).Detail.Message + " (" + ((FaultException<RequestFault>)exception).Detail.PropertyName + "); ";
             }
             if (exception is FaultException<RequestFault[]>)
             {
@@ -61,7 +68,7 @@ namespace N3ApiClient.IemkService.Exceptions
 
         private string GetWarningMessage(RequestWarning requestWarning)
         {
-            if (requestWarning.Warnings.Length > 0)
+            if (requestWarning.Warnings != null && requestWarning.Warnings.Length > 0)
             {
                 for (int i = 0; i < requestWarning.Warnings.Length; i++)
                 {

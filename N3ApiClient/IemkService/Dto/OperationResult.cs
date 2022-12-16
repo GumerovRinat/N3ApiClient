@@ -1,7 +1,7 @@
 ﻿using N3ApiClient.IemkService.Abstractions;
 using N3ApiClient.IemkService.Exceptions;
 
-namespace N3ApiClient.IemkService.OperationDto
+namespace N3ApiClient.IemkService.Dto
 {
     public class OperationResult : IOperationResult
     {

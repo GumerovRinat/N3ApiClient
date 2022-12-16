@@ -1,7 +1,7 @@
 ﻿using N3ApiClient.IemkService.Abstractions;
 using N3ApiClient.IemkService.DataContracts;
-using N3ApiClient.IemkService.OperationDto;
-using N3ApiClient.IemkService.OperationDto.EmkServiceDto;
+using N3ApiClient.IemkService.Dto;
+using N3ApiClient.IemkService.Dto.EmkServiceDto;
 
 namespace N3ApiClient.IemkService.ClientOperations.EmkServiceOperations
 {

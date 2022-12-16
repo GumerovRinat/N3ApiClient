@@ -1,7 +1,7 @@
 ﻿using N3ApiClient.IemkService.Abstractions;
 using N3ApiClient.IemkService.DataContracts;
 using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Common;
-using N3ApiClient.IemkService.OperationDto;
+using N3ApiClient.IemkService.Dto;
 using System;
 
 namespace N3ApiClient.IemkService.ClientFactory
@@ -43,11 +43,11 @@ namespace N3ApiClient.IemkService.ClientFactory
             }
             catch (System.ServiceModel.FaultException<RequestWarning[]> ex)
             {
-                return new OperationResult().SetException(ex).SetSuccess(false);
+                return new OperationResult().SetException(ex).SetSuccess(true);
             }
             catch (System.ServiceModel.FaultException<RequestWarning> ex)
             {
-                return new OperationResult().SetException(ex).SetSuccess(false);
+                return new OperationResult().SetException(ex).SetSuccess(true);
             }
             catch (Exception ex)
             {

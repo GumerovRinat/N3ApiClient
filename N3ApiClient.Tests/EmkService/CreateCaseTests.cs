@@ -1,7 +1,7 @@
 using N3ApiClient.IemkService.ClientFactory;
 using N3ApiClient.IemkService.ClientOperations.EmkServiceOperations;
 using N3ApiClient.IemkService.ClientOperations.PixServiceOperations;
-using N3ApiClient.IemkService.OperationDto.EmkServiceDto;
+using N3ApiClient.IemkService.Dto.EmkServiceDto;
 using N3ApiClient.Tests.Builders;
 using Xunit;
 
@@ -18,7 +18,7 @@ namespace N3ApiClient.Tests.EmkService
                 Token = Constants.EMK_TOKEN,
                 Case = new CaseBuilder().
                     WithCreateBaseAmbCase().
-                    AddAmbSteps().
+                    //AddAmbSteps().
                     Build()
             };
             createCaseDto.Case.IdCaseMis = "54ED160B-2F73-4503-B50D-210E970F4448";

@@ -1,5 +1,5 @@
 ﻿using N3ApiClient.IemkService.DataContracts;
-using N3ApiClient.IemkService.OperationDto;
+using N3ApiClient.IemkService.Dto;
 
 namespace N3ApiClient.IemkService.Abstractions
 {

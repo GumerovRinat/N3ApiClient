@@ -1,7 +1,7 @@
 ﻿using N3ApiClient.IemkService.Abstractions;
 using N3ApiClient.IemkService.DataContracts;
-using N3ApiClient.IemkService.OperationDto;
-using N3ApiClient.IemkService.OperationDto.PixServiceDto;
+using N3ApiClient.IemkService.Dto;
+using N3ApiClient.IemkService.Dto.PixServiceDto;
 
 namespace N3ApiClient.IemkService.ClientOperations.PixServiceOperations
 {
