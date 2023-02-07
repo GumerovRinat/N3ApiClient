@@ -21,9 +21,9 @@ namespace N3ApiClient.Tests.Builders
             _patientDto = new PatientDto()
             {
                 BirthDate = DateTime.Parse("10.10.2000"),
-                FamilyName = "Ивановский",
-                GivenName = "Семён",
-                IdPatientMIS = "85E747C8-4BB1-4D54-9BAA-9112C2435849",
+                FamilyName = "Мисов",
+                GivenName = "Интеграт",
+                IdPatientMIS = "5445191D-0171-48ED-990E-19D756AA20AE",
                 MiddleName = "Тестович",
                 Sex = 2
             };

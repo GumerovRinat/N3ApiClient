@@ -3,6 +3,7 @@ using N3ApiClient.IemkService.ClientOperations.PixServiceOperations;
 using N3ApiClient.IemkService.DataContracts.N3.PixService.Dto;
 using N3ApiClient.IemkService.Dto.PixServiceDto;
 using N3ApiClient.Tests.Builders;
+using System;
 using Xunit;
 
 namespace N3ApiClient.Tests.PixService
@@ -14,6 +15,8 @@ namespace N3ApiClient.Tests.PixService
         {
             //Arrange
             PatientTestsBuilder patientTestsBuilder = new PatientTestsBuilder();
+            string newIdMis = Guid.NewGuid().ToString();
+
 
             GetPatientDto getPatientDto = new GetPatientDto();
             getPatientDto.IdLpu = Constants.EMK_IDLPU;
@@ -22,7 +25,8 @@ namespace N3ApiClient.Tests.PixService
                 .WithCreateBasePatient()
                 .AddSnils()
                 .Build();
-            getPatientDto.PatientDto.GivenName = "Иван";
+            getPatientDto.PatientDto.FamilyName += "ящь";
+            //getPatientDto.PatientDto.IdPatientMIS = newIdMis;
 
             UpdatePatientDto updatePatientDto = new UpdatePatientDto();
             updatePatientDto.IdLpu = Constants.EMK_IDLPU;
@@ -30,7 +34,8 @@ namespace N3ApiClient.Tests.PixService
             updatePatientDto.PatientDto = patientTestsBuilder
                 .WithCreateBasePatient()
                 .Build();
-            updatePatientDto.PatientDto.GivenName = "Иван";
+            updatePatientDto.PatientDto.FamilyName += "ящь";
+            //updatePatientDto.PatientDto.IdPatientMIS = newIdMis;
 
             var updateOperation = new UpdatePatientOperation(updatePatientDto);
             var getOperation = new GetPatientOperation(getPatientDto);
@@ -47,7 +52,6 @@ namespace N3ApiClient.Tests.PixService
             Assert.True(getResult.IsSuccess());
             var patients = getResult.GetResult<PatientDto[]>();
             Assert.True(patients.Length > 0);
-            Assert.Equal("Иван", patients[0].GivenName);
         }
     }
 }

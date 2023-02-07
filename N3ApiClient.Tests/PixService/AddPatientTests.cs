@@ -7,7 +7,7 @@ using Xunit;
 
 namespace N3ApiClient.Tests.PixService
 {
-    public class CreateCaseTests
+    public class AddPatientTests
     {
         [Fact]
         public void AddPatient_ResultSuccess()
@@ -28,13 +28,10 @@ namespace N3ApiClient.Tests.PixService
 
             //Act
             var result = creator.ExecuteOperation(operation);
-            result.SetExceptionMessage("Ex Message");
 
             //Assert
             Assert.NotNull(result);
             Assert.True(result.IsSuccess());
-            Assert.NotNull(result.GetException().ErrorMessage);
-            Assert.Equal("Ex Message", result.GetException().ErrorMessage);
         }
     }
 }
