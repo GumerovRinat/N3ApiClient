@@ -1,10 +1,9 @@
-﻿
-using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.MedRec;
+﻿using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.MedRec;
 using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.MedRec.Diag;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace N3ApiClient.Tests.Builders
+namespace N3ApiClient.Tests.Builders.Emk
 {
     public class MedRecordBuilder
     {

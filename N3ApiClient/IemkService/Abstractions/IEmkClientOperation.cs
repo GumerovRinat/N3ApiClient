@@ -1,5 +1,5 @@
-﻿using N3ApiClient.IemkService.DataContracts;
-using N3ApiClient.IemkService.Dto;
+﻿using N3ApiClient.Base.Abstractions;
+using N3ApiClient.IemkService.DataContracts;
 
 namespace N3ApiClient.IemkService.Abstractions
 {
@@ -13,6 +13,6 @@ namespace N3ApiClient.IemkService.Abstractions
         /// </summary>
         /// <param name="clientInstance">Инстанс клиента, для сервиса ИЭМК</param>
         /// <returns>Результат выполнения операции</returns>
-        OperationResult Execute(EmkServiceClient clientInstance);
+        IOperationResult Execute(EmkServiceClient clientInstance);
     }
 }

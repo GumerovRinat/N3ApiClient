@@ -3,7 +3,7 @@ using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Case;
 using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Step;
 using System;
 
-namespace N3ApiClient.Tests.Builders
+namespace N3ApiClient.Tests.Builders.Emk
 {
     internal class CaseBuilder
     {
@@ -45,7 +45,7 @@ namespace N3ApiClient.Tests.Builders
             return this;
         }
 
-        public CaseBuilder AddMedRecords() 
+        public CaseBuilder AddMedRecords()
         {
             _caseAmb.MedRecords = new MedRecordBuilder().AddMainDiagnosis().AddComplicationDiagnosis().Build();
             return this;

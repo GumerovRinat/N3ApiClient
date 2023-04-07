@@ -1,4 +1,6 @@
-﻿namespace N3ApiClient.IemkService.Abstractions
+﻿using N3ApiClient.Base.Abstractions;
+
+namespace N3ApiClient.IemkService.Abstractions
 {
     /// <summary>
     /// Фабрика клиентов для сервиса обмена данными пациентов

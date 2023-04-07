@@ -1,12 +1,12 @@
 ﻿using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto;
 using System;
 
-namespace N3ApiClient.Tests.Builders
+namespace N3ApiClient.Tests.Builders.Emk
 {
     public class MedicalStaffBuilder
     {
         private MedicalStaff _medicalStaff;
-        public MedicalStaffBuilder() 
+        public MedicalStaffBuilder()
         {
             _medicalStaff = new MedicalStaff();
         }

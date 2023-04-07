@@ -1,10 +1,10 @@
 using N3ApiClient.IemkService.ClientFactory;
 using N3ApiClient.IemkService.ClientOperations.EmkServiceOperations;
-using N3ApiClient.IemkService.ClientOperations.PixServiceOperations;
 using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Common;
 using N3ApiClient.IemkService.Dto;
 using N3ApiClient.IemkService.Dto.EmkServiceDto;
-using N3ApiClient.Tests.Builders;
+using N3ApiClient.IemkService.Exceptions;
+using N3ApiClient.Tests.Builders.Emk;
 using System.ServiceModel;
 using Xunit;
 
@@ -65,10 +65,10 @@ namespace N3ApiClient.Tests.EmkService
 
             //Act
 
-
             //Assert
             Assert.True(result.IsSuccess());
-            Assert.NotNull(result.GetException().WarningMessage);
+            Assert.IsType<N3SoapClientException>(result.GetException());
+            Assert.NotNull(((N3SoapClientException)result.GetException()).WarningMessage);
         }
     }
 }

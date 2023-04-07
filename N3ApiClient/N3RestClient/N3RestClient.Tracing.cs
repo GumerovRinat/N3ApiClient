@@ -2,15 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using N3ApiClient.AppointmentService.Svip.Tools;
 using RestSharp;
 using System.Globalization;
+using N3ApiClient.N3RestClient.Tools;
 
-namespace N3ApiClient.AppointmentService.Svip
+namespace N3ApiClient.N3RestClient
 {
-    partial class SvipClient
+    partial class N3RestClient
     {
         private const string ApiMethodNameHeaderName = "X-ApiMethodName";
         private const string ApiTimestampParameterName = "X-ApiTimestamp";

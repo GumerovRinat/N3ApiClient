@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace N3ApiClient.AppointmentService.Svip.Tools
+namespace N3ApiClient.N3RestClient.Tools
 {
     internal static class HtmlHelper
     {

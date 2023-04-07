@@ -1,22 +1,25 @@
-﻿using N3ApiClient.AppointmentService.Svip.DataContract;
-using N3ApiClient.AppointmentService.Svip.Tools;
+﻿using Hl7.Fhir.Model;
+using N3ApiClient.N3RestClient.Abstrations;
+using N3ApiClient.N3RestClient.Exceptions;
+using N3ApiClient.N3RestClient.Tools;
 using RestSharp;
 using RestSharp.Serialization;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
-namespace N3ApiClient.AppointmentService.Svip
+namespace N3ApiClient.N3RestClient
 {
-    public partial class SvipClient
+    public partial class N3RestClient : IN3RestClient
     {
-        private const string TEST_URL = "http://r26-rc.zdrav.netrika.ru/authorization/api/";
-        private const string PRODUCTION_URL = "http://172.29.29.44/authorization/api/";
-
+        private const string SVIP_TEST_URL = "http://r26-rc.zdrav.netrika.ru/authorization/api/";
+        private const string SVIP_PRODUCTION_URL = "http://172.29.29.44/authorization/api/";
+        private const string ODLI_TEST_URL = "http://r26-rc.zdrav.netrika.ru/Exlab/api/fhir/";
+        private const string ODLI_PRODUCTION_URL = "http://172.29.29.250/laboratory/exlab/api/fhir";
+        private const string ACCESS_TOKEN_TEST = "N3 bfb72436-18b9-5edb-909a-5c42289f59b0";
+        private const string ACCESS_TOKEN_PROD = "N3 bd7427a4-024d-40f0-576f-bdff80f20712";
 
         /// <summary>
         /// Gets the <see cref="IRestClient"/> instance.
@@ -25,13 +28,15 @@ namespace N3ApiClient.AppointmentService.Svip
 
         private IRestSerializer Serializer { get; set; }
 
-        public SvipClient(IRestClient client)
+        public N3RestClient(IRestClient client)
         {
             Client = client;
+            Serializer = new FhirSerializer();
 
             Client.Encoding = Encoding.UTF8;
             Client.ThrowOnDeserializationError = false;
-            Client.AddHandler("application/json", () => new RestSharp.Serializers.Newtonsoft.Json.NewtonsoftJsonSerializer());
+            Client.AddDefaultHeader("Authorization", ACCESS_TOKEN_PROD);
+            Client.UseSerializer(() => Serializer);
         }
 
         /// <summary>
@@ -39,8 +44,8 @@ namespace N3ApiClient.AppointmentService.Svip
         /// </summary>
         /// <param name="credentials">Credentials used for authentication.</param>
         /// <param name="baseUrl">Base URL of the API endpoint.</param>
-        public SvipClient(string baseUrl = PRODUCTION_URL)
-            : this(new RestClient(baseUrl ?? PRODUCTION_URL))
+        public N3RestClient(string baseUrl = ODLI_PRODUCTION_URL)
+            : this(new RestClient(baseUrl ?? ODLI_PRODUCTION_URL))
         {
         }
 
@@ -48,10 +53,6 @@ namespace N3ApiClient.AppointmentService.Svip
         {
             request.AddParameter(ApiTimestampParameterName, DateTime.Now.Ticks, ParameterType.UrlSegment);
             request.AddParameter(ApiTickCountParameterName, Environment.TickCount.ToString(), ParameterType.UrlSegment);
-            if (!string.IsNullOrWhiteSpace(apiMethodName))
-            {
-                request.AddHeader(ApiMethodNameHeaderName, apiMethodName);
-            }
 
             if (Tracer != null)
             {
@@ -242,7 +243,7 @@ namespace N3ApiClient.AppointmentService.Svip
                 // try to find the non-empty error message
                 var errorMessage = response.ErrorMessage;
                 var contentMessage = response.Content;
-                var errorResponse = default(ErrorResponse);
+                var errorResponse = default(OperationOutcome);
                 if (response.ContentType != null)
                 {
                     // Text/plain;charset=UTF-8 => text/plain
@@ -256,15 +257,14 @@ namespace N3ApiClient.AppointmentService.Svip
                     // Try to deserialize error response DTO
                     if (Serializer.SupportedContentTypes.Contains(contentType))
                     {
-                        errorResponse = Serializer.Deserialize<ErrorResponse>(response);
-                        contentMessage = string.Join(". ", new[]
+                        contentMessage = "";
+                        errorResponse = Serializer.Deserialize<OperationOutcome>(response);
+                        foreach (var issue in errorResponse.Issue)
                         {
-                            errorResponse.Error,
-                            errorResponse.Message,
-                            errorResponse.Description,
+                            contentMessage += $"{issue.Diagnostics} ";
+                            if (issue.LocationElement.Count > 0 && issue.LocationElement[0].Value != null)
+                                contentMessage += $" ({issue.LocationElement[0].Value}). ";
                         }
-                        .Distinct()
-                        .Where(m => !string.IsNullOrWhiteSpace(m)));
                     }
                     else if (response.ContentType.ToLower().Contains("html"))
                     {
@@ -291,7 +291,7 @@ namespace N3ApiClient.AppointmentService.Svip
                 }
 
                 // finally, throw it
-                throw new SvipException(response.StatusCode, errorMessage, errorResponse, response.ErrorException);
+                throw new N3RestClientException(response.StatusCode, errorMessage, errorResponse, response.ErrorException);
             }
         }
 

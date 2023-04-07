@@ -2,6 +2,7 @@
 using N3ApiClient.IemkService.DataContracts;
 using N3ApiClient.IemkService.Dto.PixServiceDto;
 using N3ApiClient.IemkService.Dto;
+using N3ApiClient.Base.Abstractions;
 
 namespace N3ApiClient.IemkService.ClientOperations.PixServiceOperations
 {
@@ -16,7 +17,7 @@ namespace N3ApiClient.IemkService.ClientOperations.PixServiceOperations
             _operationResult = new OperationResult();
         }
 
-        public OperationResult Execute(PixServiceClient clientInstance)
+        public IOperationResult Execute(PixServiceClient clientInstance)
         {
             clientInstance.AddPatient(_addPatientDto.Token, _addPatientDto.IdLpu, _addPatientDto.PatientDto);
             return _operationResult;

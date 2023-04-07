@@ -1,4 +1,5 @@
-﻿using N3ApiClient.IemkService.Abstractions;
+﻿using N3ApiClient.Base.Abstractions;
+using N3ApiClient.IemkService.Abstractions;
 using N3ApiClient.IemkService.DataContracts;
 using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Common;
 using N3ApiClient.IemkService.Dto;

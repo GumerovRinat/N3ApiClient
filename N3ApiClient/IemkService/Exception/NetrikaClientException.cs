@@ -1,19 +1,19 @@
-﻿using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Common;
-using System;
+﻿using N3ApiClient.Base.Exceptions;
+using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Common;
 using System.ServiceModel;
 
 namespace N3ApiClient.IemkService.Exceptions
 {
-    public class NetrikaClientException : Exception
+    public class N3SoapClientException : NetrikaException
     {
         private string _errorMessage;
 
-        public NetrikaClientException(string exceptionMessage)
+        public N3SoapClientException(string exceptionMessage)
         {
             ErrorMessage = exceptionMessage;
         }
 
-        public NetrikaClientException(object exception)
+        public N3SoapClientException(object exception)
         {
             InnerException = exception;
             SetException(exception);

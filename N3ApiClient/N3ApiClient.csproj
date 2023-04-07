@@ -33,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Hl7.Fhir.DSTU2.Core">
+      <HintPath>..\N3ApiClient.Tests\bin\Debug\net472\Hl7.Fhir.DSTU2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Hl7.Fhir.DSTU2.Support.Poco">
+      <HintPath>..\N3ApiClient.Tests\bin\Debug\net472\Hl7.Fhir.DSTU2.Support.Poco.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=106.11.2.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>packages\RestSharp.106.11.2\lib\net452\RestSharp.dll</HintPath>
@@ -43,7 +49,9 @@
       <HintPath>packages\RestSharp.Newtonsoft.Json.1.5.1\lib\net452\RestSharp.Serializers.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
@@ -62,19 +70,21 @@
     <Compile Include="AppointmentService\HubService\HubServiceContractClasses.cs" />
     <Compile Include="AppointmentService\HubService\HubServiceEnums.cs" />
     <Compile Include="AppointmentService\HubService\IHubService.cs" />
-    <Compile Include="AppointmentService\SvipClient\DataContract\ErrorResponse.cs" />
     <Compile Include="AppointmentService\SvipClient\DataContract\GetSessionResponse.cs" />
     <Compile Include="AppointmentService\SvipClient\DataContract\GetTokenResponse.cs" />
-    <Compile Include="AppointmentService\SvipClient\SvipClient.cs" />
-    <Compile Include="AppointmentService\SvipClient\SvipException.cs" />
-    <Compile Include="AppointmentService\SvipClient\Tools\HashUtilites.cs" />
-    <Compile Include="AppointmentService\SvipClient\Tools\HtmlHelper.cs" />
-    <Compile Include="AppointmentService\SvipClient\Tools\JsonFormatter.cs" />
+    <Compile Include="Base\Exceptions\NetrikaException.cs" />
+    <Compile Include="N3RestClient\Abstrations\IN3RestClient.cs" />
+    <Compile Include="N3RestClient\N3RestClient.cs" />
+    <Compile Include="N3RestClient\Exceptions\N3RestClientException.cs" />
+    <Compile Include="N3RestClient\Tools\NewtonsoftJsonSerializer.cs" />
+    <Compile Include="N3RestClient\Tools\HashUtilites.cs" />
+    <Compile Include="N3RestClient\Tools\HtmlHelper.cs" />
+    <Compile Include="N3RestClient\Tools\JsonFormatter.cs" />
     <Compile Include="IemkService\Abstractions\IEmkClientOperation.cs" />
     <Compile Include="IemkService\Abstractions\IPixClientOperation.cs" />
     <Compile Include="IemkService\Abstractions\IEmkClient.cs" />
     <Compile Include="IemkService\Abstractions\IPixClient.cs" />
-    <Compile Include="IemkService\Abstractions\IOperationResult.cs" />
+    <Compile Include="Base\Abstractions\IOperationResult.cs" />
     <Compile Include="IemkService\Abstractions\EmkClientFactory.cs" />
     <Compile Include="IemkService\Abstractions\PixClientFactory.cs" />
     <Compile Include="IemkService\ClientFactory\EmkClient.cs" />
@@ -101,11 +111,22 @@
     <Compile Include="IemkService\Dto\PixServiceDto\AddPatientDto.cs" />
     <Compile Include="IemkService\Dto\BaseDto.cs" />
     <Compile Include="IemkService\Dto\OperationResult.cs" />
+    <Compile Include="OdliService\Dto\BinaryDto.cs" />
+    <Compile Include="OdliService\Dto\BundleRequestDto.cs" />
+    <Compile Include="OdliService\Dto\BinaryContentType.cs" />
+    <Compile Include="OdliService\Dto\DiagnosticReportDto.cs" />
+    <Compile Include="OdliService\Dto\ObservationDto.cs" />
+    <Compile Include="OdliService\OdliOperationResult.cs" />
+    <Compile Include="OdliService\Operations\BundleOperations.cs" />
+    <Compile Include="OdliService\Operations\PatientOperations.cs" />
+    <Compile Include="OdliService\Operations\PracticionerOperations.cs" />
+    <Compile Include="N3RestClient\Tools\FhirSerializer.cs" />
+    <Compile Include="OdliService\Operations\ResourceOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <Compile Include="AppointmentService\SvipClient\SvipClient.Tracing.cs" />
+    <Compile Include="N3RestClient\N3RestClient.Tracing.cs" />
     <Compile Include="AppointmentService\SvipClient\SvipClient.Opeations.cs" />
     <None Include="packages.config" />
   </ItemGroup>

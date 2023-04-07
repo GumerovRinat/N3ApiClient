@@ -1,6 +1,6 @@
-﻿using N3ApiClient.IemkService.Exceptions;
+﻿using N3ApiClient.Base.Exceptions;
 
-namespace N3ApiClient.IemkService.Abstractions
+namespace N3ApiClient.Base.Abstractions
 {
     /// <summary>
     /// Результат выполнения операции
@@ -23,7 +23,7 @@ namespace N3ApiClient.IemkService.Abstractions
         /// Получить сведения об ошибке при выполнении операции
         /// </summary>
         /// <returns>Сведения об ошибке</returns>
-        NetrikaClientException GetException();
+        NetrikaException GetException();
 
         /// <summary>
         /// Задать ошбку при выполнении операции

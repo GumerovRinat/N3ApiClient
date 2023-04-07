@@ -4,6 +4,7 @@ using N3ApiClient.IemkService.ClientOperations.PixServiceOperations;
 using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.MedRec;
 using N3ApiClient.IemkService.Dto.EmkServiceDto;
 using N3ApiClient.Tests.Builders;
+using N3ApiClient.Tests.Builders.Emk;
 using Xunit;
 
 namespace N3ApiClient.Tests.EmkService

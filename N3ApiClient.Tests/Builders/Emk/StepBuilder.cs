@@ -1,7 +1,7 @@
 ﻿using N3ApiClient.IemkService.DataContracts.N3.EMK.Dto.Step;
 using System.Collections.Generic;
 
-namespace N3ApiClient.Tests.Builders
+namespace N3ApiClient.Tests.Builders.Emk
 {
     public class StepBuilder
     {
@@ -16,7 +16,7 @@ namespace N3ApiClient.Tests.Builders
         {
             //Информация об эпизоде случая медицинского обслуживания
             StepAmb stepAmb = new StepAmb();
-            stepAmb.DateStart = new System.DateTime(2022,11,10);
+            stepAmb.DateStart = new System.DateTime(2022, 11, 10);
             stepAmb.DateEnd = new System.DateTime(2022, 11, 10);
             stepAmb.IdStepMis = "deae7494-fc19-4838-9adc-3b8d3e04c625";
             stepAmb.IdVisitPlace = 1;           //Идентификатор места посещения (Классификатор мест обслуживания, Справочник OID: 1.2.643.2.69.1.1.1.18)

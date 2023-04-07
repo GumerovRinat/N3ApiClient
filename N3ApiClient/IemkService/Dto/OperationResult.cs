@@ -1,4 +1,5 @@
-﻿using N3ApiClient.IemkService.Abstractions;
+﻿using N3ApiClient.Base.Abstractions;
+using N3ApiClient.Base.Exceptions;
 using N3ApiClient.IemkService.Exceptions;
 
 namespace N3ApiClient.IemkService.Dto
@@ -6,7 +7,7 @@ namespace N3ApiClient.IemkService.Dto
     public class OperationResult : IOperationResult
     {
         private bool _success;
-        private NetrikaClientException _exception;
+        private NetrikaException _exception;
         private object _operationResult;
 
         /// <summary>
@@ -22,7 +23,7 @@ namespace N3ApiClient.IemkService.Dto
         /// Возвращает ошибку при выполнении операции
         /// </summary>
         /// <returns></returns>
-        public NetrikaClientException GetException()
+        public NetrikaException GetException()
         {
             return _exception;
         }
@@ -43,7 +44,7 @@ namespace N3ApiClient.IemkService.Dto
         /// <param name="exception"></param>
         public IOperationResult SetException(object exception)
         {
-            _exception = new NetrikaClientException(exception);
+            _exception = new N3SoapClientException(exception);
             return this;
         }
 
@@ -53,7 +54,7 @@ namespace N3ApiClient.IemkService.Dto
         /// <param name="exception"></param>
         public IOperationResult SetExceptionMessage(string exceptionMessage)
         {
-            _exception = new NetrikaClientException(exceptionMessage);
+            _exception = new N3SoapClientException(exceptionMessage);
             return this;
         }
 

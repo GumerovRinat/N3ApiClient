@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace N3ApiClient.Tests.Builders
+namespace N3ApiClient.Tests.Builders.Emk
 {
     internal class PatientTestsBuilder
     {
@@ -55,7 +55,7 @@ namespace N3ApiClient.Tests.Builders
         {
             if (_documents.Count > 0)
                 _patientDto.Documents = _documents.ToArray();
-            if(_addresses.Count > 0)
+            if (_addresses.Count > 0)
                 _patientDto.Addresses = _addresses.ToArray();
             return _patientDto;
         }
